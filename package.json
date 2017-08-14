@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Kiricon/Bones2D/issues"
   },
-  "homepage": "https://github.com/Kiricon/Bones2D#readme"
+  "homepage": "https://github.com/Kiricon/Bones2D#readme",
+  "devDependencies": {
+    "typescript": "^2.4.2"
+  }
 }
