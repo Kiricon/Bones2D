@@ -1,5 +1,5 @@
-import Object from "./objects/Object";
+import Sprite from "./objects/Sprite";
 
-let obj = new Object(1, 2);
+let obj = new Sprite(1, 2, 4, 5);
 
 alert(obj.position.x);

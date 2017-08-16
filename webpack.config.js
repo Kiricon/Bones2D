@@ -1,16 +1,23 @@
+const path = require('path');
+
 module.exports = {
-    entry: "./main.ts",
-    output: {
-        filename: "./demo/bones.js"
+    entry: {
+        main: './main',
     },
     resolve: {
-        // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".js", ".ts"]
+    },
+    output: {
+        path: path.join(__dirname, '/demo'),
+        filename: 'bones.js'
     },
     module: {
         loaders: [
-            // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
-            { test: /\.tsx?$/, loader: "ts-loader" }
+            {
+                test: /\.ts$/,
+                loader: 'ts-loader'
+            }
         ]
-    }
-}
+    },
+    watch: true
+};

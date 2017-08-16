@@ -70,8 +70,8 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Object_1 = __webpack_require__(1);
-var obj = new Object_1.default(1, 2);
+var Sprite_1 = __webpack_require__(1);
+var obj = new Sprite_1.default(1, 2, 4, 5);
 alert(obj.position.x);
 
 
@@ -82,13 +82,22 @@ alert(obj.position.x);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Object = (function () {
-    function Object(x, y) {
+var Sprite = (function () {
+    function Sprite(x, y, height, width) {
         this.position = { x: x, y: y };
+        this.size = { height: height, width: width };
     }
-    return Object;
+    Sprite.prototype.setHeigh = function (height) {
+        this.size.height = height;
+    };
+    Sprite.prototype.setWidth = function (width) {
+        this.size.width = width;
+    };
+    Sprite.prototype.update = function () {
+    };
+    return Sprite;
 }());
-exports.default = Object;
+exports.default = Sprite;
 
 
 /***/ })
