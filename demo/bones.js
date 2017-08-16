@@ -70,37 +70,15 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var GenericObject_1 = __webpack_require__(2);
+var GenericObject_1 = __webpack_require__(1);
 var Game_1 = __webpack_require__(3);
 var game = new Game_1.default("#canvas");
 game.register(new GenericObject_1.default(1, 2, 3, 5));
+game.start();
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Sprite = (function () {
-    function Sprite(x, y, height, width) {
-        this.position = { x: x, y: y };
-        this.size = { height: height, width: width };
-    }
-    Sprite.prototype.setHeigh = function (height) {
-        this.size.height = height;
-    };
-    Sprite.prototype.setWidth = function (width) {
-        this.size.width = width;
-    };
-    return Sprite;
-}());
-exports.default = Sprite;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -116,7 +94,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var Sprite_1 = __webpack_require__(1);
+var Sprite_1 = __webpack_require__(2);
 var GenericObject = (function (_super) {
     __extends(GenericObject, _super);
     function GenericObject() {
@@ -128,9 +106,43 @@ var GenericObject = (function (_super) {
     GenericObject.prototype.init = function () {
         alert(this.position.x);
     };
+    GenericObject.prototype.draw = function (ctx) {
+        // Draw stuff here
+    };
     return GenericObject;
 }(Sprite_1.default));
 exports.default = GenericObject;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Sprite = (function () {
+    function Sprite(x, y, height, width) {
+        this.position = { x: x, y: y };
+        this.size = { height: height, width: width };
+    }
+    /**
+     * Set the height of the sprite
+     * @param height
+     */
+    Sprite.prototype.setHeigh = function (height) {
+        this.size.height = height;
+    };
+    /**
+     * Set the width of the sprite
+     * @param width
+     */
+    Sprite.prototype.setWidth = function (width) {
+        this.size.width = width;
+    };
+    return Sprite;
+}());
+exports.default = Sprite;
 
 
 /***/ }),
@@ -142,14 +154,45 @@ exports.default = GenericObject;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Game = (function () {
     function Game(canvas) {
-        this.gameObjects = [];
         this.canvas = document.querySelector(canvas);
         this.context = this.canvas.getContext("2d");
+        this.gameObjects = [];
     }
+    /**
+     * Register a sprite to the game so it can be  rendered
+     * and updated.
+     * @param sprite Srite to register to the game
+     */
     Game.prototype.register = function (sprite) {
         this.gameObjects.push(sprite);
         if (typeof sprite.init !== "undefined") {
             sprite.init();
+        }
+    };
+    Game.prototype.start = function () {
+        var self = this;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        var timer = setInterval(function () {
+            self.draw();
+        }, 20);
+        timer;
+    };
+    Game.prototype.draw = function () {
+        var ctx = this.context;
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        ctx.fillStyle = '#292D3E';
+        this.drawRegisiteredObjects(ctx);
+    };
+    Game.prototype.drawRegisiteredObjects = function (ctx) {
+        for (var i = 0; i < this.gameObjects.length; i++) {
+            if (this.gameObjects[i]) {
+                this.gameObjects[i].update();
+                ctx.save();
+                this.gameObjects[i].draw(ctx);
+                ctx.restore();
+            }
         }
     };
     return Game;

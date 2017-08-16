@@ -10,7 +10,7 @@ export default class GenericObject extends Sprite {
         alert(this.position.x);
     }
 
-    draw(): void {
+    draw(ctx: CanvasRenderingContext2D): void {
         // Draw stuff here
     }
 
