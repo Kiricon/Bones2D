@@ -1,6 +1,6 @@
 import {IPosition, ISize} from "./../common/grid";
 
-export default class Sprite {
+export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
@@ -18,7 +18,5 @@ export default class Sprite {
         this.size.width = width;
     }
 
-    private update() {
-
-    }
+    abstract update(): void;
 }

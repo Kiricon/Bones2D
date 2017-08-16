@@ -70,8 +70,8 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Sprite_1 = __webpack_require__(1);
-var obj = new Sprite_1.default(1, 2, 4, 5);
+var GenericObject_1 = __webpack_require__(2);
+var obj = new GenericObject_1.default(1, 2, 4, 5);
 alert(obj.position.x);
 
 
@@ -93,11 +93,40 @@ var Sprite = (function () {
     Sprite.prototype.setWidth = function (width) {
         this.size.width = width;
     };
-    Sprite.prototype.update = function () {
-    };
     return Sprite;
 }());
 exports.default = Sprite;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Sprite_1 = __webpack_require__(1);
+var GenericObject = (function (_super) {
+    __extends(GenericObject, _super);
+    function GenericObject() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    GenericObject.prototype.update = function () {
+        console.log('Update');
+    };
+    return GenericObject;
+}(Sprite_1.default));
+exports.default = GenericObject;
 
 
 /***/ })
