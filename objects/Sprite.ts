@@ -36,4 +36,9 @@ export default abstract class Sprite {
      * Method that is ran when the sprite is first registered.
      */
     abstract init?(): void;
+
+    /**
+     * Method used to draw a the sprite
+     */
+    abstract draw?(): void;
 }

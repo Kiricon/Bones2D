@@ -10,4 +10,8 @@ export default class GenericObject extends Sprite {
         alert(this.position.x);
     }
 
+    draw(): void {
+        // Draw stuff here
+    }
+
 }
