@@ -10,15 +10,30 @@ export default abstract class Sprite {
         this.size = {height: height, width: width};
     }
 
+    /**
+     * Set the height of the sprite
+     * @param height 
+     */
     setHeigh(height: number) {
         this.size.height = height;
     }
 
+    /**
+     * Set the width of the sprite
+     * @param width 
+     */
     setWidth(width: number) {
         this.size.width = width;
     }
 
+    /**
+     * Method that is ran periodically througt the life
+     * cycle of the gamme
+     */
     abstract update(): void;
 
+    /**
+     * Method that is ran when the sprite is first registered.
+     */
     abstract init?(): void;
 }
