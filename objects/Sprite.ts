@@ -19,4 +19,6 @@ export default abstract class Sprite {
     }
 
     abstract update(): void;
+
+    abstract init?(): void;
 }

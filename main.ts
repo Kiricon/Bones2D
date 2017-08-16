@@ -1,5 +1,6 @@
 import GenericObject from "./objects/GenericObject";
+import Game from "./common/Game";
 
-let obj = new GenericObject(1, 2, 4, 5);
+let game = new Game("#canvas");
 
-alert(obj.position.x);
+game.register(new GenericObject(1, 2, 3, 5));

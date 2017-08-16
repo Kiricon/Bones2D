@@ -71,8 +71,9 @@
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var GenericObject_1 = __webpack_require__(2);
-var obj = new GenericObject_1.default(1, 2, 4, 5);
-alert(obj.position.x);
+var Game_1 = __webpack_require__(3);
+var game = new Game_1.default("#canvas");
+game.register(new GenericObject_1.default(1, 2, 3, 5));
 
 
 /***/ }),
@@ -124,9 +125,36 @@ var GenericObject = (function (_super) {
     GenericObject.prototype.update = function () {
         console.log('Update');
     };
+    GenericObject.prototype.init = function () {
+        alert(this.position.x);
+    };
     return GenericObject;
 }(Sprite_1.default));
 exports.default = GenericObject;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Game = (function () {
+    function Game(canvas) {
+        this.gameObjects = [];
+        this.canvas = document.querySelector(canvas);
+        this.context = this.canvas.getContext("2d");
+    }
+    Game.prototype.register = function (sprite) {
+        this.gameObjects.push(sprite);
+        if (typeof sprite.init !== "undefined") {
+            sprite.init();
+        }
+    };
+    return Game;
+}());
+exports.default = Game;
 
 
 /***/ })
