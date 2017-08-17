@@ -32,7 +32,7 @@ export default class Game {
         let self = this;
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
-		let timer = setInterval(function() {
+		let timer = setInterval(() => {
 			self.draw();
 		}, 20);
 		timer;
