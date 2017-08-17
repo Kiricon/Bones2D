@@ -25,6 +25,9 @@ export default class Game {
         }
     }
 
+    /**
+     * Start the game instance and begin periodic updates every 20ms
+     */
     start() {
         let self = this;
 		this.canvas.width = window.innerWidth;
@@ -35,6 +38,10 @@ export default class Game {
 		timer;
     }
 
+    /**
+     * Draw the blank canvas and the calls subsequent
+     * method to run through all game objects.
+     */
     private draw() {
         let ctx = this.context;
 		ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -43,6 +50,12 @@ export default class Game {
         this.drawRegisiteredObjects(ctx);
     }
 
+    /**
+     * Loop through all registered game objects and call their 
+     * update method and then their draw method.
+     * This will draw all registered objects on the screen
+     * @param ctx 
+     */
     private drawRegisiteredObjects(ctx: CanvasRenderingContext2D) {
         for(let i = 0; i < this.gameObjects.length; i++) {
             if(this.gameObjects[i]) {
