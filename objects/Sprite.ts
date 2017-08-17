@@ -1,4 +1,4 @@
-import {IPosition, ISize} from "./../common/grid";
+import {IPosition, ISize} from "./../common/Grid";
 
 export default abstract class Sprite {
 
@@ -9,6 +9,7 @@ export default abstract class Sprite {
         this.position = {x: x, y: y};
         this.size = {height: height, width: width};
     }
+
 
     /**
      * Set the height of the sprite
@@ -41,4 +42,5 @@ export default abstract class Sprite {
      * Method used to draw a the sprite
      */
     abstract draw(ctx: CanvasRenderingContext2D): void;
+
 }
