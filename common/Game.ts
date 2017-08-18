@@ -1,11 +1,9 @@
 import Sprite from "./../objects/Sprite";
-import {Grid} from "./Grid";
 
 export default class Game {
 
     canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
-    grid: Grid;
 
     private gameObjects: Sprite[];
 
@@ -13,7 +11,6 @@ export default class Game {
         this.canvas = <HTMLCanvasElement> document.querySelector(canvas);
         this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
         this.gameObjects = [];
-        this.grid = new Grid(this.canvas);
     }
 
     /**

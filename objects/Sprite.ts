@@ -1,4 +1,4 @@
-import {IPosition, ISize, Grid} from "./../common/Grid";
+import {IPosition, ISize} from "./../common/Grid";
 import Game from "./../common/Game";
 
 export default abstract class Sprite {

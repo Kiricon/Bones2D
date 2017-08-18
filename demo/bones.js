@@ -167,13 +167,11 @@ exports.default = Sprite;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Grid_1 = __webpack_require__(4);
 var Game = (function () {
     function Game(canvas) {
         this.canvas = document.querySelector(canvas);
         this.context = this.canvas.getContext("2d");
         this.gameObjects = [];
-        this.grid = new Grid_1.Grid(this.canvas);
     }
     /**
      * Register a sprite to the game so it can be  rendered
@@ -229,37 +227,6 @@ var Game = (function () {
     return Game;
 }());
 exports.default = Game;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Grid = (function () {
-    function Grid(canvas) {
-        this.canvasHeight = canvas.height;
-        this.canvasWidth = canvas.width;
-    }
-    /**
-     * Calculate the pixel position of an x coordinate on a 100x100 grid
-     * @param x
-     */
-    Grid.prototype.x = function (x) {
-        return this.canvasWidth / 100 * x;
-    };
-    /**
-     * Calculate the pixel position of a y coordiante on a 100x100 grid
-     * @param y
-     */
-    Grid.prototype.y = function (y) {
-        return this.canvasHeight / 100 * y;
-    };
-    return Grid;
-}());
-exports.Grid = Grid;
 
 
 /***/ })
