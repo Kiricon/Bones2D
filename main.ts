@@ -3,6 +3,6 @@ import Game from "./common/Game";
 
 let game = new Game("#canvas");
 
-game.register(new GenericObject(1, 2, 3, 5));
+game.register(new GenericObject(50, 50, 10, 10));
 
 game.start();

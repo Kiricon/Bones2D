@@ -73,7 +73,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var GenericObject_1 = __webpack_require__(1);
 var Game_1 = __webpack_require__(3);
 var game = new Game_1.default("#canvas");
-game.register(new GenericObject_1.default(1, 2, 3, 5));
+game.register(new GenericObject_1.default(50, 50, 10, 10));
 game.start();
 
 
@@ -101,15 +101,14 @@ var GenericObject = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GenericObject.prototype.update = function () {
-        console.log('Update');
-        this.position.x++;
+        console.log(this.x(this.position.x));
+        this.position.x += 0.1;
     };
     GenericObject.prototype.init = function () {
         //alert(this.position.x);
         console.log(this.position.x);
     };
     GenericObject.prototype.draw = function (ctx) {
-        // Draw stuff here
         ctx.beginPath();
         ctx.rect(this.x(this.position.x), this.y(this.position.y), 200, 100);
         ctx.fillStyle = 'yellow';
@@ -154,8 +153,8 @@ var Sprite = (function () {
         return 0;
     };
     Sprite.prototype.setGrid = function (grid) {
-        this.x = grid.x;
-        this.y = grid.y;
+        this.x = function (x) { return grid.x(x); };
+        this.y = function (y) { return grid.y(y); };
     };
     return Sprite;
 }());

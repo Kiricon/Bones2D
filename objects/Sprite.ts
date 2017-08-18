@@ -52,8 +52,8 @@ export default abstract class Sprite {
     }
 
     setGrid(grid: Grid) {
-        this.x = grid.x;
-        this.y = grid.y;
+        this.x = (x: number) => grid.x(x);
+        this.y = (y: number) => grid.y(y);
     }
 
 }
