@@ -14,7 +14,7 @@ export default class GenericObject extends Sprite {
 
     draw(ctx: CanvasRenderingContext2D): void {
         ctx.beginPath();
-        ctx.rect(this.x(this.position.x), this.y(this.position.y), 200, 100);
+        ctx.rect(this.realX(), this.realY(), 200, 100);
         ctx.fillStyle = 'yellow';
         ctx.fill();
         ctx.stroke();

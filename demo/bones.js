@@ -110,7 +110,7 @@ var GenericObject = (function (_super) {
     };
     GenericObject.prototype.draw = function (ctx) {
         ctx.beginPath();
-        ctx.rect(this.x(this.position.x), this.y(this.position.y), 200, 100);
+        ctx.rect(this.realX(), this.realY(), 200, 100);
         ctx.fillStyle = 'yellow';
         ctx.fill();
         ctx.stroke();
@@ -154,6 +154,12 @@ var Sprite = (function () {
     };
     Sprite.prototype.addGameReference = function (game) {
         this.game = game;
+    };
+    Sprite.prototype.realX = function () {
+        return this.x(this.position.x);
+    };
+    Sprite.prototype.realY = function () {
+        return this.y(this.position.y);
     };
     return Sprite;
 }());

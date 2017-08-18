@@ -57,4 +57,12 @@ export default abstract class Sprite {
         this.game = game;
     }
 
+    realX(): number {
+        return this.x(this.position.x);
+    }
+
+    realY(): number {
+        return this.y(this.position.y);
+    }
+
 }
