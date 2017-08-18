@@ -1,9 +1,11 @@
 import Sprite from "./../objects/Sprite";
+import Grid from "./Grid";
 
 export default class Game {
 
     canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
+    grid: Grid;
 
     private gameObjects: Sprite[];
 
@@ -11,6 +13,7 @@ export default class Game {
         this.canvas = <HTMLCanvasElement> document.querySelector(canvas);
         this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
         this.gameObjects = [];
+        this.grid = new Grid(this.canvas);
     }
 
     /**
@@ -19,6 +22,7 @@ export default class Game {
      * @param sprite Srite to register to the game
      */
     register(sprite: Sprite) {
+        sprite.setGrid(this.grid);
         this.gameObjects.push(sprite);
         if(typeof sprite.init !== "undefined") {
             sprite.init();

@@ -1,9 +1,11 @@
-import {IPosition, ISize} from "./../common/Grid";
+import {IPosition, ISize, Grid} from "./../common/Grid";
 
 export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
+    x(): void;
+    y(): void;
 
     constructor(x:number, y:number, height: number, width: number) {
         this.position = {x: x, y: y};
@@ -42,5 +44,10 @@ export default abstract class Sprite {
      * Method used to draw a the sprite
      */
     abstract draw(ctx: CanvasRenderingContext2D): void;
+
+    setGrid(grid: Grid) {
+        this.x = grid.x;
+        this.y = grid.y;
+    }
 
 }
