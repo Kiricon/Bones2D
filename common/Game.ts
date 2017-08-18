@@ -1,5 +1,5 @@
 import Sprite from "./../objects/Sprite";
-import Grid from "./Grid";
+import {Grid} from "./Grid";
 
 export default class Game {
 

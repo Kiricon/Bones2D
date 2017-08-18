@@ -4,8 +4,8 @@ export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
-    x(): void;
-    y(): void;
+    x?(x: number): void;
+    y?(y: number): void;
 
     constructor(x:number, y:number, height: number, width: number) {
         this.position = {x: x, y: y};

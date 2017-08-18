@@ -22,7 +22,7 @@ export class Grid {
      * @param x 
      */
     x(x: number):number {
-        return canvasWidth / 100 * num;
+        return this.canvasWidth / 100 * x;
     }
 
 
@@ -31,6 +31,6 @@ export class Grid {
      * @param y 
      */
     y(y: number):number {
-        return canvasHeight / 100 * num;
+        return this.canvasHeight / 100 * y;
     }
 }

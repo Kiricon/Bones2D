@@ -104,10 +104,16 @@ var GenericObject = (function (_super) {
         console.log('Update');
     };
     GenericObject.prototype.init = function () {
-        alert(this.position.x);
+        //alert(this.position.x);
+        console.log(this.position.x);
     };
     GenericObject.prototype.draw = function (ctx) {
         // Draw stuff here
+        ctx.beginPath();
+        ctx.rect(188, 50, 200, 100);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+        ctx.stroke();
     };
     return GenericObject;
 }(Sprite_1.default));
@@ -140,6 +146,10 @@ var Sprite = (function () {
     Sprite.prototype.setWidth = function (width) {
         this.size.width = width;
     };
+    Sprite.prototype.setGrid = function (grid) {
+        this.x = grid.x;
+        this.y = grid.y;
+    };
     return Sprite;
 }());
 exports.default = Sprite;
@@ -152,11 +162,13 @@ exports.default = Sprite;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var Grid_1 = __webpack_require__(4);
 var Game = (function () {
     function Game(canvas) {
         this.canvas = document.querySelector(canvas);
         this.context = this.canvas.getContext("2d");
         this.gameObjects = [];
+        this.grid = new Grid_1.Grid(this.canvas);
     }
     /**
      * Register a sprite to the game so it can be  rendered
@@ -164,11 +176,15 @@ var Game = (function () {
      * @param sprite Srite to register to the game
      */
     Game.prototype.register = function (sprite) {
+        sprite.setGrid(this.grid);
         this.gameObjects.push(sprite);
         if (typeof sprite.init !== "undefined") {
             sprite.init();
         }
     };
+    /**
+     * Start the game instance and begin periodic updates every 20ms
+     */
     Game.prototype.start = function () {
         var self = this;
         this.canvas.width = window.innerWidth;
@@ -178,6 +194,10 @@ var Game = (function () {
         }, 20);
         timer;
     };
+    /**
+     * Draw the blank canvas and the calls subsequent
+     * method to run through all game objects.
+     */
     Game.prototype.draw = function () {
         var ctx = this.context;
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -185,6 +205,12 @@ var Game = (function () {
         ctx.fillStyle = '#292D3E';
         this.drawRegisiteredObjects(ctx);
     };
+    /**
+     * Loop through all registered game objects and call their
+     * update method and then their draw method.
+     * This will draw all registered objects on the screen
+     * @param ctx
+     */
     Game.prototype.drawRegisiteredObjects = function (ctx) {
         for (var i = 0; i < this.gameObjects.length; i++) {
             if (this.gameObjects[i]) {
@@ -198,6 +224,37 @@ var Game = (function () {
     return Game;
 }());
 exports.default = Game;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Grid = (function () {
+    function Grid(canvas) {
+        this.canvasHeight = canvas.height;
+        this.canvasWidth = canvas.width;
+    }
+    /**
+     * Calculate the pixel position of an x coordinate on a 100x100 grid
+     * @param x
+     */
+    Grid.prototype.x = function (x) {
+        return this.canvasWidth / 100 * x;
+    };
+    /**
+     * Calculate the pixel position of a y coordiante on a 100x100 grid
+     * @param y
+     */
+    Grid.prototype.y = function (y) {
+        return this.canvasHeight / 100 * y;
+    };
+    return Grid;
+}());
+exports.Grid = Grid;
 
 
 /***/ })

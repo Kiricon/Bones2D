@@ -7,11 +7,17 @@ export default class GenericObject extends Sprite {
     }
 
     init(): void {
-        alert(this.position.x);
+        //alert(this.position.x);
+        console.log(this.position.x);
     }
 
     draw(ctx: CanvasRenderingContext2D): void {
         // Draw stuff here
+        ctx.beginPath();
+        ctx.rect(188, 50, 200, 100);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+        ctx.stroke();
     }
 
 }
