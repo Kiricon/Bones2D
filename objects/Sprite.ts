@@ -45,22 +45,43 @@ export default abstract class Sprite {
      */
     abstract draw(ctx: CanvasRenderingContext2D): void;
 
+    /**
+     * A method to convert the grid value to the actual
+     * pixel value on the canvas.
+     * @param x 
+     */
     x(x: number): number {
         return this.game.canvas.width / 100 * x;
     }
 
+    /**
+     * A method to convert the grid value to the actual
+     * pixel value on the canvas.
+     * @param y 
+     */
     y(y: number): number {
         return this.game.canvas.height / 100 * y;
     }
 
+    /**
+     * After registerying a sprite to the game we pass a
+     * reference of the game to the sprite.
+     * @param game 
+     */
     addGameReference(game: Game) {
         this.game = game;
     }
 
+    /**
+     * Returns the real pixel value of the sprites X position
+     */
     realX(): number {
         return this.x(this.position.x);
     }
 
+    /**
+     * Returns the real pixel value of the sprites y position
+     */
     realY(): number {
         return this.y(this.position.y);
     }

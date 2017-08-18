@@ -146,18 +146,39 @@ var Sprite = (function () {
     Sprite.prototype.setWidth = function (width) {
         this.size.width = width;
     };
+    /**
+     * A method to convert the grid value to the actual
+     * pixel value on the canvas.
+     * @param x
+     */
     Sprite.prototype.x = function (x) {
         return this.game.canvas.width / 100 * x;
     };
+    /**
+     * A method to convert the grid value to the actual
+     * pixel value on the canvas.
+     * @param y
+     */
     Sprite.prototype.y = function (y) {
         return this.game.canvas.height / 100 * y;
     };
+    /**
+     * After registerying a sprite to the game we pass a
+     * reference of the game to the sprite.
+     * @param game
+     */
     Sprite.prototype.addGameReference = function (game) {
         this.game = game;
     };
+    /**
+     * Returns the real pixel value of the sprites X position
+     */
     Sprite.prototype.realX = function () {
         return this.x(this.position.x);
     };
+    /**
+     * Returns the real pixel value of the sprites y position
+     */
     Sprite.prototype.realY = function () {
         return this.y(this.position.y);
     };
