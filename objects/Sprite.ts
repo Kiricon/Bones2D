@@ -1,9 +1,11 @@
 import {IPosition, ISize, Grid} from "./../common/Grid";
+import Game from "./../common/Game";
 
 export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
+    private game: Game; 
 
     constructor(x:number, y:number, height: number, width: number) {
         this.position = {x: x, y: y};
@@ -44,16 +46,15 @@ export default abstract class Sprite {
     abstract draw(ctx: CanvasRenderingContext2D): void;
 
     x(x: number): number {
-        return 0;
+        return this.game.canvas.width / 100 * x;
     }
 
     y(y: number): number {
-        return 0;
+        return this.game.canvas.height / 100 * y;
     }
 
-    setGrid(grid: Grid) {
-        this.x = (x: number) => grid.x(x);
-        this.y = (y: number) => grid.y(y);
+    addGameReference(game: Game) {
+        this.game = game;
     }
 
 }

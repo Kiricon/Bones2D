@@ -22,7 +22,7 @@ export default class Game {
      * @param sprite Srite to register to the game
      */
     register(sprite: Sprite) {
-        sprite.setGrid(this.grid);
+        sprite.addGameReference(this);
         this.gameObjects.push(sprite);
         if(typeof sprite.init !== "undefined") {
             sprite.init();

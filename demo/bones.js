@@ -101,8 +101,8 @@ var GenericObject = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GenericObject.prototype.update = function () {
-        console.log(this.x(this.position.x));
         this.position.x += 0.1;
+        this.position.y += 0.2;
     };
     GenericObject.prototype.init = function () {
         //alert(this.position.x);
@@ -147,14 +147,13 @@ var Sprite = (function () {
         this.size.width = width;
     };
     Sprite.prototype.x = function (x) {
-        return 0;
+        return this.game.canvas.width / 100 * x;
     };
     Sprite.prototype.y = function (y) {
-        return 0;
+        return this.game.canvas.height / 100 * y;
     };
-    Sprite.prototype.setGrid = function (grid) {
-        this.x = function (x) { return grid.x(x); };
-        this.y = function (y) { return grid.y(y); };
+    Sprite.prototype.addGameReference = function (game) {
+        this.game = game;
     };
     return Sprite;
 }());
@@ -182,7 +181,7 @@ var Game = (function () {
      * @param sprite Srite to register to the game
      */
     Game.prototype.register = function (sprite) {
-        sprite.setGrid(this.grid);
+        sprite.addGameReference(this);
         this.gameObjects.push(sprite);
         if (typeof sprite.init !== "undefined") {
             sprite.init();

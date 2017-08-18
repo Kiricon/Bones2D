@@ -3,8 +3,8 @@ import Sprite from "./Sprite";
 export default class GenericObject extends Sprite {
 
     update(): void {
-        console.log(this.x(this.position.x));
         this.position.x+= 0.1;
+        this.position.y+= 0.2;
     }
 
     init(): void {
