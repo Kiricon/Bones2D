@@ -4,8 +4,6 @@ export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
-    x?(x: number): void;
-    y?(y: number): void;
 
     constructor(x:number, y:number, height: number, width: number) {
         this.position = {x: x, y: y};
@@ -44,6 +42,14 @@ export default abstract class Sprite {
      * Method used to draw a the sprite
      */
     abstract draw(ctx: CanvasRenderingContext2D): void;
+
+    x(x: number): number {
+        return 0;
+    }
+
+    y(y: number): number {
+        return 0;
+    }
 
     setGrid(grid: Grid) {
         this.x = grid.x;

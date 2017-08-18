@@ -102,6 +102,7 @@ var GenericObject = (function (_super) {
     }
     GenericObject.prototype.update = function () {
         console.log('Update');
+        this.position.x++;
     };
     GenericObject.prototype.init = function () {
         //alert(this.position.x);
@@ -110,7 +111,7 @@ var GenericObject = (function (_super) {
     GenericObject.prototype.draw = function (ctx) {
         // Draw stuff here
         ctx.beginPath();
-        ctx.rect(188, 50, 200, 100);
+        ctx.rect(this.x(this.position.x), this.y(this.position.y), 200, 100);
         ctx.fillStyle = 'yellow';
         ctx.fill();
         ctx.stroke();
@@ -145,6 +146,12 @@ var Sprite = (function () {
      */
     Sprite.prototype.setWidth = function (width) {
         this.size.width = width;
+    };
+    Sprite.prototype.x = function (x) {
+        return 0;
+    };
+    Sprite.prototype.y = function (y) {
+        return 0;
     };
     Sprite.prototype.setGrid = function (grid) {
         this.x = grid.x;
