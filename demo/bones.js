@@ -198,6 +198,8 @@ var Game = (function () {
     function Game(canvas) {
         this.canvas = document.querySelector(canvas);
         this.context = this.canvas.getContext("2d");
+        var ratio = window.devicePixelRatio;
+        this.context.scale(ratio, ratio);
         this.gameObjects = [];
     }
     /**

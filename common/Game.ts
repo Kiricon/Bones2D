@@ -10,6 +10,8 @@ export default class Game {
     constructor(canvas: string) {
         this.canvas = <HTMLCanvasElement> document.querySelector(canvas);
         this.context = <CanvasRenderingContext2D> this.canvas.getContext("2d");
+        let ratio = window.devicePixelRatio;
+        this.context.scale(ratio, ratio);
         this.gameObjects = [];
     }
 
