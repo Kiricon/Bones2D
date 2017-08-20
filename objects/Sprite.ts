@@ -5,7 +5,7 @@ export default abstract class Sprite {
 
     position: IPosition;
     size: ISize;
-    private game: Game; 
+    game: Game; 
 
     constructor(x:number, y:number, height: number, width: number) {
         this.position = {x: x, y: y};
