@@ -8,3 +8,9 @@ export interface ISize {
     width: number;
 }
 
+
+export interface IGravity {
+    gravityLevel: number;
+    gravityPoint: IPosition;
+}
+

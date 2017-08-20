@@ -1,4 +1,4 @@
-import {IPosition, ISize} from "./../common/Grid";
+import {IPosition, ISize} from "./../common/GameInterfaces";
 import Game from "./../common/Game";
 
 export default abstract class Sprite {
@@ -84,6 +84,10 @@ export default abstract class Sprite {
      */
     realY(): number {
         return this.y(this.position.y);
+    }
+
+    automaticUpdate() {
+
     }
 
 }

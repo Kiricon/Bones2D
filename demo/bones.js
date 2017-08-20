@@ -182,6 +182,8 @@ var Sprite = (function () {
     Sprite.prototype.realY = function () {
         return this.y(this.position.y);
     };
+    Sprite.prototype.automaticUpdate = function () {
+    };
     return Sprite;
 }());
 exports.default = Sprite;
@@ -246,6 +248,7 @@ var Game = (function () {
     Game.prototype.drawRegisiteredObjects = function (ctx) {
         for (var i = 0; i < this.gameObjects.length; i++) {
             if (this.gameObjects[i]) {
+                this.gameObjects[i].automaticUpdate();
                 this.gameObjects[i].update();
                 ctx.save();
                 this.gameObjects[i].draw(ctx);

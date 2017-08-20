@@ -62,6 +62,7 @@ export default class Game {
     private drawRegisiteredObjects(ctx: CanvasRenderingContext2D) {
         for(let i = 0; i < this.gameObjects.length; i++) {
             if(this.gameObjects[i]) {
+                this.gameObjects[i].automaticUpdate();
                 this.gameObjects[i].update();
                 ctx.save();
                 this.gameObjects[i].draw(ctx);
